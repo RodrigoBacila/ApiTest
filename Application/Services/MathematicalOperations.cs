@@ -6,24 +6,24 @@ namespace Application.Services
     public class MathematicalOperations : IMathematicalOperations
     {
         
-        public int Add(int firstValue, int secondValue)
+        public decimal Add(decimal firstValue, decimal secondValue)
         {
             return new Addition(firstValue, secondValue).Execute();
         }
 
-        public int Divide(int firstValue, int secondValue)
+        public decimal Divide(decimal firstValue, decimal secondValue)
         {
             return new Division(firstValue, secondValue).Execute();
         }
 
-        public int Multiply(int firstValue, int secondValue)
+        public decimal Multiply(decimal firstValue, decimal secondValue)
         {
             return new Multiplication(firstValue, secondValue).Execute();
         }
 
-        public int Substract(int firstValue, int secondValue)
+        public decimal Substract(decimal firstValue, decimal secondValue)
         {
-            return new Substraction(firstValue, secondValue).Execute();
+            return new Subtraction(firstValue, secondValue).Execute();
         }
     }
 }

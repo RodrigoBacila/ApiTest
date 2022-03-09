@@ -2,9 +2,9 @@
 {
     public interface IMathematicalOperations
     {
-        int Add(int firstValue, int secondValue);
-        int Substract(int firstValue, int secondValue);
-        int Divide(int firstValue, int secondValue);
-        int Multiply(int firstValue, int secondValue);
+        decimal Add(decimal firstValue, decimal secondValue);
+        decimal Substract(decimal firstValue, decimal secondValue);
+        decimal Divide(decimal firstValue, decimal secondValue);
+        decimal Multiply(decimal firstValue, decimal secondValue);
     }
 }
