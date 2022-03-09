@@ -2,13 +2,13 @@
 {
     public class Division : MathematicalOperation
     {
-        public Division(int firstValue, int secondValue) : base(firstValue, secondValue)
+        public Division(decimal firstValue, decimal secondValue) : base(firstValue, secondValue)
         {
         }
 
-        public override int Execute()
+        public override decimal Execute()
         {
-            return FirstValue / SecondValue;
+            return decimal.Divide(FirstValue, SecondValue);
         }
     }
 }

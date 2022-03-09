@@ -4,16 +4,16 @@ namespace Domain.MathematicalOperations
 {
     public abstract class MathematicalOperation
     {
-        private int firstValue;
-        private int secondValue;
+        protected decimal firstValue;
+        protected decimal secondValue;
 
-        protected MathematicalOperation(int firstValue, int secondValue)
+        protected MathematicalOperation(decimal firstValue, decimal secondValue)
         {
             FirstValue = firstValue;
             SecondValue = secondValue;
         }
 
-        protected int FirstValue
+        protected decimal FirstValue
         {
             get => firstValue; set
             {
@@ -22,7 +22,7 @@ namespace Domain.MathematicalOperations
             }
         }
 
-        protected int SecondValue
+        protected decimal SecondValue
         {
             get => secondValue; set
             {
@@ -31,6 +31,6 @@ namespace Domain.MathematicalOperations
             }
         }
 
-        public abstract int Execute();
+        public abstract decimal Execute();
     }
 }

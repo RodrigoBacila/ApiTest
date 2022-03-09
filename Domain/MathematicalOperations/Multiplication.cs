@@ -2,11 +2,11 @@
 {
     public class Multiplication : MathematicalOperation
     {
-        public Multiplication(int firstValue, int secondValue) : base(firstValue, secondValue)
+        public Multiplication(decimal firstValue, decimal secondValue) : base(firstValue, secondValue)
         {
         }
 
-        public override int Execute()
+        public override decimal Execute()
         {
             return FirstValue * SecondValue;
         }
