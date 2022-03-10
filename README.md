@@ -11,7 +11,10 @@ Test API for project structuring, recurrent tasking and infrastructure implement
 
 ## External API integration with RestSharp
 
-⚠️ Limited to 250 requests per month, so should anyone test this code, please do so with moderation. Thank you!
-[Currency Api](https://app.currencyapi.com/)
+> ⚠️ Limited to 300 requests per month, so should anyone test this code, please do so with moderation. Thank you!
+
+<img width="947" alt="image" src="https://user-images.githubusercontent.com/49081253/157655803-022fd27f-444d-4c34-a0b9-284e4907c827.png">
+
+Reference: [Currency Api](https://app.currencyapi.com/)
 
 ## Database management with Entity Framework and SQL Server
