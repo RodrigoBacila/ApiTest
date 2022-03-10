@@ -2,6 +2,6 @@
 {
     public interface IExchangeApiClient
     {
-        Task<IList<Quotation>?> GetCurrentExchangeRatesAsync();
+        Task<IList<QuotationResponse>?> GetCurrentExchangeRatesAsync();
     }
 }

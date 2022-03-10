@@ -20,16 +20,20 @@ namespace Application.Services
         {
             var currentQuotation = await exchangeApiClient.GetCurrentExchangeRatesAsync();
 
-            if (currentQuotation == null)
+            if (!currentQuotation?.Any() ?? true) // This is just sample code. The best approach would be to have a logging system and/or implement a callback with a result object containing the error message (especially with a frontend integration)
             {
-                System.Diagnostics.Debug.WriteLine("Failed to get current quotation."); // Aqui se poderia usar um logger ou criar um retorno personalizado para o front, usando um objeto de resultado que encapsule o valor (ex: OperationResult com erro)
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{DateTime.Now.ToShortTimeString()} - Failed to get current quotation.");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                BackgroundJob.Schedule<AutoDollarQuotationRegistry>(job => job.RegisterCurrentQuotationAsync(), TimeSpan.FromSeconds(60));
 
                 return;
             }
 
-            var quotations = new List<Quotation>(currentQuotation.Select(quotation => new Quotation(quotation.Code, quotation.Value)));
+            var quotations = new List<QuotationResponse>(currentQuotation.Select(quotation => new QuotationResponse(quotation.Code, quotation.Value)));
 
-            await exchangeRatesRepository.RegisterLatestExchangeRatesAsync(quotations.Select(quot => new QuotationDto(quot.Code, quot.Value)).ToList());
+            await exchangeRatesRepository.RegisterLatestExchangeRatesAsync(quotations.Select(quot => new CurrentQuotation(quot.Code, quot.Value)).ToList());
 
             BackgroundJob.Schedule<AutoDollarQuotationRegistry>(job => job.RegisterCurrentQuotationAsync(), TimeSpan.FromSeconds(15));
         }

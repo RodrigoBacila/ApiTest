@@ -4,6 +4,6 @@ namespace Application.Interfaces
 {
     public interface IExchangeRatesRepository
     {
-        Task RegisterLatestExchangeRatesAsync(IList<QuotationDto> quotations);
+        Task RegisterLatestExchangeRatesAsync(IList<CurrentQuotation> quotations);
     }
 }

@@ -13,10 +13,5 @@ namespace Application.DataTransferObjects
         [Key]
         public string Code { get; private set; }
         public decimal Rate { get; private set; }
-
-        public void UpdateRate(decimal newRate)
-        {
-            Rate = newRate;
-        }
     }
 }

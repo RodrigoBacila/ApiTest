@@ -14,7 +14,7 @@ namespace Infrastructure.Repositories
             this.context = context;
         }
 
-        public async Task RegisterLatestExchangeRatesAsync(IList<QuotationDto> quotations)
+        public async Task RegisterLatestExchangeRatesAsync(IList<CurrentQuotation> quotations)
         {
             foreach (var quotation in quotations)
             {
@@ -22,12 +22,12 @@ namespace Infrastructure.Repositories
 
                 if (existentRegistry == null)
                 {
-                    await context.CurrentQuotations.AddAsync(new CurrentQuotation(quotation.Code, quotation.Value));
+                    await context.CurrentQuotations.AddAsync(quotation);
                     continue;
                 }
 
                 context.CurrentQuotations.Remove(existentRegistry);
-                await context.CurrentQuotations.AddAsync(new CurrentQuotation(quotation.Code, quotation.Value));
+                await context.CurrentQuotations.AddAsync(quotation);
             }
 
             await context.SaveChangesAsync();

@@ -17,7 +17,7 @@ namespace ExchangeApiClient
             restClient.AddDefaultParameter(Parameter.CreateParameter("apikey", AccessKey, ParameterType.QueryString));
         }
 
-        public async Task<IList<Quotation>?> GetCurrentExchangeRatesAsync()
+        public async Task<IList<QuotationResponse>?> GetCurrentExchangeRatesAsync()
         {
             var request = new RestRequest()
                 .AddQueryParameter("base_currency", "USD")
@@ -28,7 +28,13 @@ namespace ExchangeApiClient
             if (response.IsSuccessful && !string.IsNullOrEmpty(response.Content))
             {
                 var rates = JsonConvert.DeserializeObject<CurrentExchangeRates>(response.Content);
-                return new List<Quotation>()
+
+                if (rates == null)
+                {
+                    return new List<QuotationResponse>();
+                }
+
+                return new List<QuotationResponse>()
                 {
                     rates.Data.Brl,
                     rates.Data.Eur

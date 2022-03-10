@@ -2,12 +2,12 @@
 
 namespace ExchangeApiClient
 {
-    public class Quotation
+    public class QuotationResponse
     {
-        public Quotation()
+        public QuotationResponse()
         { }
 
-        public Quotation(string code, decimal value)
+        public QuotationResponse(string code, decimal value)
         {
             Code = code;
             Value = value;
