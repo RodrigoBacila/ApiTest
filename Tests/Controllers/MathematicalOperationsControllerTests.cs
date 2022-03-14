@@ -21,8 +21,8 @@ namespace Tests.Controllers
             controller = container.Resolve<MathematicalOperationsController>();
         }
 
-        [Fact]
-        public async void Addition_Operation_Should_Return_Proper_Values()
+        [Fact(DisplayName = "Addition operation")]
+        public void Addition_Operation_Should_Return_Proper_Values()
         {
             var request = new
             {
@@ -55,8 +55,8 @@ namespace Tests.Controllers
                 .Be(expectedResult);
         }
 
-        [Fact]
-        public async void Subtraction_Operation_Should_Return_Proper_Values()
+        [Fact(DisplayName = "Subtraction operation")]
+        public void Subtraction_Operation_Should_Return_Proper_Values()
         {
             var request = new
             {
@@ -89,8 +89,8 @@ namespace Tests.Controllers
                 .Be(expectedResult);
         }
 
-        [Fact]
-        public async void Division_Operation_Should_Return_Proper_Values()
+        [Fact(DisplayName = "Division operation")]
+        public void Division_Operation_Should_Return_Proper_Values()
         {
             var request = new
             {
@@ -123,8 +123,8 @@ namespace Tests.Controllers
                 .Be(expectedResult);
         }
 
-        [Fact]
-        public async void Multiplication_Operation_Should_Return_Proper_Values()
+        [Fact(DisplayName = "Multiplication operation")]
+        public void Multiplication_Operation_Should_Return_Proper_Values()
         {
             var request = new
             {
@@ -157,8 +157,8 @@ namespace Tests.Controllers
                 .Be(expectedResult);
         }
 
-        [Fact]
-        public async void Division_Operation_Should_Not_Attempt_To_Divide_By_Zero()
+        [Fact(DisplayName = "Division operation by zero")]
+        public void Division_Operation_Should_Not_Attempt_To_Divide_By_Zero()
         {
             var request = new
             {
