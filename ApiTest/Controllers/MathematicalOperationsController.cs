@@ -1,7 +1,7 @@
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ApiTest.Controllers
+namespace Api.Controllers
 {
     /// <summary>
     /// Mathematical Operations
@@ -24,10 +24,11 @@ namespace ApiTest.Controllers
         /// <param name="secondValue">Second value to be considered</param>
         /// <returns>The resulting addition operation of both values</returns>
         [ProducesResponseType(typeof(decimal), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("add", Name = "Addition")]
-        public decimal Add([FromQuery] decimal firstValue, [FromQuery] decimal secondValue)
+        public IActionResult Add([FromQuery] decimal firstValue, [FromQuery] decimal secondValue)
         {
-            return mathematicalOperations.Add(firstValue, secondValue);
+            return Ok(mathematicalOperations.Add(firstValue, secondValue));
         }
 
         /// <summary>
@@ -37,10 +38,11 @@ namespace ApiTest.Controllers
         /// <param name="secondValue">Second value to be considered</param>
         /// <returns>The resulting subtraction of both values</returns>
         [ProducesResponseType(typeof(decimal), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("substract", Name = "Substraction")]
-        public decimal Substract([FromQuery] decimal firstValue, [FromQuery] decimal secondValue)
+        public IActionResult Subtract([FromQuery] decimal firstValue, [FromQuery] decimal secondValue)
         {
-            return mathematicalOperations.Substract(firstValue, secondValue);
+            return Ok(mathematicalOperations.Subtract(firstValue, secondValue));
         }
 
         /// <summary>
@@ -50,10 +52,14 @@ namespace ApiTest.Controllers
         /// <param name="secondValue">Second value to be considered</param>
         /// <returns>The resulting division of the first value by the second value</returns>
         [ProducesResponseType(typeof(decimal), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("divide", Name = "Division")]
-        public decimal Divide([FromQuery] decimal firstValue, [FromQuery] decimal secondValue)
+        public IActionResult Divide([FromQuery] decimal firstValue, [FromQuery] decimal secondValue)
         {
-            return mathematicalOperations.Divide(firstValue, secondValue);
+            if (secondValue == 0)
+                return BadRequest("Cannot divide by zero.");
+
+            return Ok(mathematicalOperations.Divide(firstValue, secondValue));
         }
 
         /// <summary>
@@ -63,10 +69,11 @@ namespace ApiTest.Controllers
         /// <param name="secondValue">Second value to be considered</param>
         /// <returns>The resulting multiplication of both values</returns>
         [ProducesResponseType(typeof(decimal), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("multiply", Name = "Multiplication")]
-        public decimal Multiply([FromQuery] decimal firstValue, [FromQuery] decimal secondValue)
+        public IActionResult Multiply([FromQuery] decimal firstValue, [FromQuery] decimal secondValue)
         {
-            return mathematicalOperations.Multiply(firstValue, secondValue);
+            return Ok(mathematicalOperations.Multiply(firstValue, secondValue));
         }
     }
 }

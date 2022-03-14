@@ -21,7 +21,7 @@ namespace Application.Services
             return new Multiplication(firstValue, secondValue).Execute();
         }
 
-        public decimal Substract(decimal firstValue, decimal secondValue)
+        public decimal Subtract(decimal firstValue, decimal secondValue)
         {
             return new Subtraction(firstValue, secondValue).Execute();
         }
