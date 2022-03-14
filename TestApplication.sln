@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTest", "ApiTest\ApiTest.csproj", "{75208A0E-9314-48EB-961B-DA145C8A3882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "ApiTest\Api.csproj", "{75208A0E-9314-48EB-961B-DA145C8A3882}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{8E9DB6F1-FE40-4FA4-8AAA-8D4CED14182C}"
 EndProject
@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hangfire", "Hangfire\Hangfire.csproj", "{8B88A549-8175-4B0F-9C7A-7617596A8A0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeApiClient", "ExchangeApiClient\ExchangeApiClient.csproj", "{C63471C3-9B80-44A9-B082-0B38782A3C16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeApiClient", "ExchangeApiClient\ExchangeApiClient.csproj", "{C63471C3-9B80-44A9-B082-0B38782A3C16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C115DDFA-570A-4BFE-8442-379F22FA8B69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C63471C3-9B80-44A9-B082-0B38782A3C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C63471C3-9B80-44A9-B082-0B38782A3C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C63471C3-9B80-44A9-B082-0B38782A3C16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C115DDFA-570A-4BFE-8442-379F22FA8B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C115DDFA-570A-4BFE-8442-379F22FA8B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C115DDFA-570A-4BFE-8442-379F22FA8B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C115DDFA-570A-4BFE-8442-379F22FA8B69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
