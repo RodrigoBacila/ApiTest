@@ -18,9 +18,9 @@ namespace Application.Services
 
         public async Task RegisterCurrentQuotationAsync()
         {
-            var currentQuotation = await exchangeApiClient.GetCurrentExchangeRatesAsync();
+            var quotationResponseList = await exchangeApiClient.GetCurrentExchangeRatesAsync();
 
-            if (!currentQuotation?.Any() ?? true) // This is just sample code. The best approach would be to have a logging system and/or implement a callback with a result object containing the error message (especially with a frontend integration)
+            if (!quotationResponseList?.Any() ?? true) // This is just sample code. The best approach would be to have a logging system and/or implement a callback with a result object containing the error message (especially with a frontend integration)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"{DateTime.Now.ToShortTimeString()} - Failed to get current quotation.");
@@ -31,9 +31,7 @@ namespace Application.Services
                 return;
             }
 
-            var quotations = new List<QuotationResponse>(currentQuotation.Select(quotation => new QuotationResponse(quotation.Code, quotation.Value)));
-
-            await exchangeRatesRepository.RegisterLatestExchangeRatesAsync(quotations.Select(quot => new CurrentQuotation(quot.Code, quot.Value)).ToList());
+            await exchangeRatesRepository.RegisterLatestExchangeRatesAsync(quotationResponseList.Select(quot => new CurrentQuotation(quot.Code, quot.Value)).ToList());
 
             BackgroundJob.Schedule<AutoDollarQuotationRegistry>(job => job.RegisterCurrentQuotationAsync(), TimeSpan.FromSeconds(15));
         }
